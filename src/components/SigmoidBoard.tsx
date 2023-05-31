@@ -11,7 +11,7 @@ export interface EstimatesInterface {
 
 export const SigmoidBoard: React.FunctionComponent = () => {
     const defaultEstimate = {mean: 0.10, deviation: 10}
-    const [estimates, setEstimates] = useState<EstimatesInterface[]>([defaultEstimate])
+    const [estimates, setEstimates] = useState<EstimatesInterface[]>([ {mean: 0.11, deviation: 10}])
     const [render, setRender] = useState<number>(0)
 
     const addEstimate = () => {
