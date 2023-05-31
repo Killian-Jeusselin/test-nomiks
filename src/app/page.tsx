@@ -1,6 +1,5 @@
 "use client";
 import styles from './page.module.css'
-import { Button } from 'primereact/button';
 import {SigmoidBoard} from "../components/SigmoidBoard";
 import React from "react";
 
