@@ -1,4 +1,4 @@
-interface SeriesInterface {
+export interface SeriesInterface {
     x: number;
     value: number
 }
@@ -21,7 +21,7 @@ class DataServices {
         return series;
     }
 
-    sigmoidSeries(start:number, end:number, step:number | null, mean:number, deviation:number, totalValue:number) {
+    sigmoidSeries(start:number, end:number, step:number | null, mean:number, deviation:number, totalValue:number):{x:number,value:number} {
         step = step ??  Math.floor((end-start) / 10);
         const sigmoid = (x:number) => {
             if (x <= 0)
