@@ -19,12 +19,12 @@ export const SigmoidBoard: React.FunctionComponent = () => {
         setRender(render + 1)
     }
 
-    const setEstimateMeanValue = (index, value) => {
+    const setEstimateMeanValue = (index: number, value: number) => {
         estimates[index].mean = value
         setRender(render + 1)
     }
 
-    const setEstimateDeviationValue = (index, value) => {
+    const setEstimateDeviationValue = (index: number, value: number) => {
         estimates[index].deviation = value
         setRender(render + 1)
     }

@@ -5,7 +5,7 @@ export interface SeriesInterface {
 
 class DataServices {
 
-    _getSeries(start:number, end:number, step:number) {
+    _getSeries(start: number, end: number, step: number) {
         const series = [];
 
         if (start !== 0) {
@@ -15,25 +15,25 @@ class DataServices {
         for (i = start; i <= end; i += step)
             series.push(i);
 
-        if (i !== end + step )
+        if (i !== end + step)
             series.push(end);
 
         return series;
     }
 
-    sigmoidSeries(start:number, end:number, step:number | null, mean:number, deviation:number, totalValue:number):{x:number,value:number} {
-        step = step ??  Math.floor((end-start) / 10);
-        const sigmoid = (x:number) => {
+    sigmoidSeries(start: number, end: number, step: number | null, mean: number, deviation: number, totalValue: number): SeriesInterface[] {
+        step = step ?? Math.floor((end - start) / 10);
+        const sigmoid = (x: number) => {
             if (x <= 0)
                 return 0;
-            if(x===end-start)
+            if (x === end - start)
                 return totalValue;
 
             return 1 / (1 + Math.exp(-mean * (x - deviation))) * totalValue;
         }
 
         const series = this._getSeries(start, end, step);
-        let sigmoidSeries : Array<SeriesInterface> = [];
+        let sigmoidSeries: SeriesInterface[] = [];
 
         series.forEach((x) => {
             sigmoidSeries.push({x, value: sigmoid(x - start)});

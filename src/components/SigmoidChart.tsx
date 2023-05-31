@@ -18,13 +18,13 @@ export const SigmoidChart: React.FunctionComponent<SigmoidChartInterface> = (pro
     const [totalValue, setTotalValue] = useState(100)
 
     useEffect(() => {
-        const series = []
-        const dataset = []
+        const series : SeriesInterface[][] = []
+        const dataset: any[] = []
         props.estimates.map((estimate, index) => {
             series.push(dataService.sigmoidSeries(startValue, endValue, stepValue, estimate.mean, estimate.deviation, totalValue))
             dataset.push({
                 label: `Estimation n °${index + 1} `,
-                data: series[index]?.map((data) => data.value),
+                data: series[index]?.map((data: {x: number, value: number}) => data.value),
                 fill: false,
                 tension: 0.4
             })
