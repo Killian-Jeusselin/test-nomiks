@@ -1,6 +1,11 @@
+interface SeriesInterface {
+    x: number;
+    value: number
+}
+
 class DataServices {
 
-    _getSeries(start, end, step) {
+    _getSeries(start:number, end:number, step:number) {
         const series = [];
 
         if (start !== 0) {
@@ -18,7 +23,7 @@ class DataServices {
 
     sigmoidSeries(start:number, end:number, step:number | null, mean:number, deviation:number, totalValue:number) {
         step = step ??  Math.floor((end-start) / 10);
-        const sigmoid = (x) => {
+        const sigmoid = (x:number) => {
             if (x <= 0)
                 return 0;
             if(x===end-start)
@@ -28,13 +33,13 @@ class DataServices {
         }
 
         const series = this._getSeries(start, end, step);
-        let sigmoidSeries = [];
+        let sigmoidSeries : Array<SeriesInterface> = [];
+
         series.forEach((x) => {
             sigmoidSeries.push({x, value: sigmoid(x - start)});
         });
         return sigmoidSeries;
     }
-
 }
 
 
